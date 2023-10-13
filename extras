@@ -31,3 +31,95 @@ var tablegen;
               }
           }        
         })
+
+--------------------------------------------------------------------------------------
+
+import { createElement, render } from "preact";
+
+let vdom = createElement(
+  'h3',
+  {class: 'big'},
+  'Hello World!'
+);
+
+let myClass = Math.random() > 0.5 ? "big" : "small";
+let vdom2 = <h3 class={myClass}>Hello World from JSX! Sorry from TSX! {Math.random() > 0.5 ? "big" : "small"}</h3>
+
+
+function App(){
+  return(
+    <div>
+      <h3 class={myClass}>Hello World from JSX! Sorry from TSX! {Math.random() > 0.5 ? "big" : "small"}</h3>
+      <ol>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Juice</li>
+      </ol>
+    </div>
+    
+  )
+}
+
+
+function App2(){
+
+  let i = 0;
+
+  const clicked = () => {
+    i += 1;
+    console.log(i);
+  }
+
+  return(
+    <div>
+      <h3>Count:{i}</h3>
+      <button onClick={clicked}>Click Me!</button>
+    </div>
+  )
+}
+
+/* Component and pass properties to it */
+/* buttonStyle, buttonAction */
+
+function MyButton(props) {
+  return <button style={props.buttonStyle} onClick={props.buttonAction}>{props.children}</button>
+}
+
+function App3() {
+
+  let i = 0;
+
+  const clicked = () => {
+    i += 1;
+    console.log(i);
+  }
+
+  return(
+    <div>
+      <h3>Count:{i}</h3>
+      <MyButton buttonStyle={{'color': 'red'}} buttonAction={clicked}><strong>Click Me</strong></MyButton>
+    </div>
+  )
+}
+
+
+import { useState } from 'preact/hooks';
+
+function App4() {
+
+  const [count, setCount] = useState(0);
+
+  const clicked = () => {
+    setCount(count + 1)
+  }
+
+  return(
+    <div>
+      <h3>Count:{count}</h3>
+      <MyButton buttonStyle={{'color': 'red'}} buttonAction={clicked}><strong>Click Me</strong></MyButton>
+    </div>
+  )
+}
+
+render(<App4/>, document.body);
+
