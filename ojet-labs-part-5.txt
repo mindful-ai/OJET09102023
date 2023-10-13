@@ -1,0 +1,41 @@
+ojet create vdomapp --template=basic --vdom
+ojet serve
+
+styles -> app.css 
+.selectSingleStyle {
+   max-width:20em
+}
+
+.chartStyle {
+   max-width:500px;
+   width:100%;
+   height:350px;
+}
+
+index.tsx
+
+import { h } from "preact";
+import "ojs/ojlabel";
+import "ojs/ojselectsingle";
+import { ojSelectSingle } from "ojs/ojselectsingle";   
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+
+---
+
+<h1>Product Information</h1>
+
+      <div id="itemDetailsContainer">
+        <oj-label for="basicSelect">Select Chart:</oj-label>
+        <oj-select-single
+              id="basicSelect"
+              value="pie"
+              class="selectSingleStyle"
+              data={chartTypesDP}
+          ></oj-select-single>
+      </div>
+
+
+
+-----------------------
+
+
